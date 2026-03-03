@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata: { name: nexus-soc }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: backend, namespace: nexus-soc }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: backend } }
+  template:
+    metadata: { labels: { app: backend } }
+    spec:
+      containers:
+        - name: backend
+          image: nexus/backend:latest
+          ports: [{containerPort: 8000}]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: backend, namespace: nexus-soc }
+spec:
+  selector: { app: backend }
+  ports: [{ port: 8000, targetPort: 8000 }]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: frontend, namespace: nexus-soc }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: frontend } }
+  template:
+    metadata: { labels: { app: frontend } }
+    spec:
+      containers:
+        - name: frontend
+          image: nexus/frontend:latest
+          ports: [{containerPort: 3000}]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: frontend, namespace: nexus-soc }
+spec:
+  selector: { app: frontend }
+  ports: [{ port: 3000, targetPort: 3000 }]
