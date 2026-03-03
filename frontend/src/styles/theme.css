@@ -1,0 +1,14 @@
+:root{--bg:#05070d;--panel:#10162acc;--edge:#2d416f;--neon:#00e5ff;--ok:#22c55e;--run:#f59e0b;--info:#38bdf8;--text:#dbe7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#0f1a30,var(--bg));color:var(--text);font-family:Inter,Arial}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#0b1121d9;border-bottom:1px solid var(--edge);position:sticky;top:0;z-index:10}
+.brand{font-weight:700;letter-spacing:.5px}.tabs{display:flex;gap:8px}.tabs button{background:transparent;border:1px solid var(--edge);color:var(--text);padding:7px 10px;border-radius:8px}.tabs .active{border-color:var(--neon);box-shadow:0 0 10px #00e5ff55}
+.topbar-right{display:flex;align-items:center;gap:10px}.live-badge{color:#86efac;font-size:12px;animation:pulse 1.4s infinite}
+.workspace{display:grid;grid-template-columns:240px 1fr;gap:10px;padding:12px}.sidebar{height:fit-content;display:flex;flex-direction:column;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:10px}.panel{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:14px;backdrop-filter:blur(8px)}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.metric-row div{background:#0b1223;padding:10px;border-radius:10px}.metric-row h4{margin:0 0 6px;font-size:13px;color:#9fb9e8}.metric-row strong{font-size:22px}
+.incident-row,.case-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border-bottom:1px solid #22345d}.actions{display:flex;gap:8px}button{cursor:pointer}button.execute{background:#0f3a22;border:1px solid #1f7a46;color:#b7ffd0}
+.terminal{background:#060b16;border:1px solid #22345d;border-radius:10px;padding:10px;min-height:120px;font-family:monospace}.line{padding:4px 0}.line.success{color:var(--ok)}.line.running{color:var(--run)}.line.info{color:var(--info)}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:min(480px,100%);background:#070d1c;border-left:1px solid #355e9d;padding:16px;overflow:auto}
+.loading{padding:60px;text-align:center}
+@keyframes pulse{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
+@media(max-width:1000px){.workspace{grid-template-columns:1fr}.metric-row{grid-template-columns:repeat(2,1fr)}}
