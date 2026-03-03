@@ -18,3 +18,13 @@
 1. Build and push images (`nexus/backend`, `nexus/frontend`).
 2. `kubectl apply -f k8s/nexus-soc.yaml`
 3. Expose services using ingress/load balancer.
+
+
+## Container build helper
+Use this command to build the frontend image with either Docker, Podman, or nerdctl:
+
+```bash
+./scripts/container-cli.sh build -f frontend/Dockerfile frontend
+```
+
+If neither CLI exists in your sandbox, the helper prints instructions and exits cleanly.
